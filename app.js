@@ -14,13 +14,14 @@ let nomeInserido = document.querySelector('input').value; //value significa que 
         console.log(amigos);
         listaAmigos();
         limparCampo();
-
+    
     }
 }
 
 function limparCampo(){
     nomeInserido = document.querySelector('input'); // retorna ao input no HTML e armazena ele na variável nomeInserido
     nomeInserido.value = ''; // define o campo input em uma string vazia
+
 }
 
 function listaAmigos(){
@@ -28,10 +29,26 @@ function listaAmigos(){
     listaAmigosInseridos.innerHTML = ""; //limpa a lista antes de adicionar novos nomes.
     console.log(amigos);
 
-    for (let i = 0; i < amigos.length; i++){ //loop criado para adicionar cada amigo à lista <ul>
+    for (let i = 0; i < amigos.length; i++){ //loop criado para adicionar cada amigo à lista <ul>.
     let li = document.createElement('li'); //cria um novo item <li> para cada amigo.
     li.textContent = amigos[i]; // atribui o nome do amigo ao conteúdo do <li>.
     listaAmigosInseridos.append(li); // adiciona o item <li> à lista <ul>.
-    
+
     }
 }
+
+function sortearAmigo(){
+
+    if (amigos.length === 0){ // verifica se a lista não está vazia.
+
+        return alert('Não existem amigos na lista.');
+        
+    } else {
+
+    let indiceAleatorio = Math.floor(Math.random() * amigos.length); // gera o índice aleatório.
+    let amigoSorteado = amigos[indiceAleatorio];
+    console.log(amigoSorteado);
+    document.getElementById('resultado').innerHTML = 'Amigo sorteado: ' + amigoSorteado;
+    }
+}
+
